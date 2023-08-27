@@ -1,0 +1,56 @@
+.card {
+  width: 100%;
+  background-color: #292d3e;
+  border-radius: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  color: #fff;
+  padding: 20px;
+}
+.contentText {
+  text-align: left;
+  padding-left: 70px;
+  font-weight: 600;
+}
+.info {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.blockImg {
+  margin-left: 70px;
+}
+.contentImage {
+  width: 100%;
+  border-radius: 10px;
+}
+.nickName,
+.date {
+  opacity: 0.5;
+}
+.icons {
+  display: flex;
+  padding-left: 70px;
+  justify-content: space-around;
+  align-items: center;
+}
+.icons button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0.5;
+  cursor: pointer;
+  color: inherit;
+  font-size: inherit;
+  border: none;
+  background-color: transparent;
+}
+.icons button:hover {
+  opacity: 1;
+}
