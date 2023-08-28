@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   justify-content: center;
   gap: 25px;
   font-size: 24px;
-
   a {
     color: #fff;
     text-decoration: none;

@@ -1,12 +1,10 @@
 import React from 'react';
-import styles from './Publications.module.scss';
 import Post from '../components/Post';
 import { styled } from 'styled-components';
 import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
   max-width: 1200px;
-
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -15,15 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const Posts = () => {
-  const ANAKIN_IMAGE =
-    'https://www.bobafettfanclub.com/tn/200x200/multimedia/galleries/albums/userpics/10001/anakin-skywalker-1569312236.jpeg';
-
-  const RAY_IMAGE =
-    'https://specials-images.forbesimg.com/imageserve/5e63b3c8e1e617000759130e/960x0.jpg?fit=scale';
-
   const posts = useSelector((state) => state.posts);
-  console.log(posts);
-
   return (
     <>
       <Wrapper>

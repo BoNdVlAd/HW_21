@@ -2,7 +2,6 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Dropdown from '../components/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { addPost } from '../store/postsSlice';
 import SubmitButton from '../components/SubmitButton';
 

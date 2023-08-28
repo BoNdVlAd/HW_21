@@ -70,8 +70,6 @@ const Dropdown = ({ selectedAuthor, setSelectedAuthor, authors }) => {
 
   function handleActive() {
     setIsActive(!isActive);
-    console.log(isActive);
-
     setTimeout(() => {
       if (contentRef.current) {
         if (!isActive) {

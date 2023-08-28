@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Post.module.css';
+import styles from './Post.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addComment,
@@ -9,10 +9,38 @@ import {
   removeLike,
   removeShare,
 } from '../../store/postsSlice';
+import { styled } from 'styled-components';
+
+const Card = styled.div`
+  width: 100%;
+  max-height: 650px;
+  background-color: #292d3e;
+  border-radius: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  color: #fff;
+  padding: 20px;
+`;
+
+const Button = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0.5;
+  cursor: pointer;
+  color: inherit;
+  font-size: inherit;
+  border: none;
+  background-color: transparent;
+  &:hover {
+    opacity: 1;
+  }
+  &.active {
+    opacity: 1;
+  }
+`;
 
 const Post = (props) => {
   const { author, content, image, date, comments, shares, likes, id } = props;
-  console.log(image);
   const dispatch = useDispatch();
   const [liked, setLiked] = React.useState(false);
   const [shared, setShared] = React.useState(false);
@@ -76,7 +104,7 @@ const Post = (props) => {
   };
 
   return (
-    <div className={styles.card}>
+    <Card>
       <div className={styles.info}>
         <img className={styles.avatar} src={author.photo} />
         <h2 className={styles.fullName}>{author.name}</h2>
@@ -91,7 +119,6 @@ const Post = (props) => {
           <path d="M22.41,10.59,20.36,8.54V5.63a2,2,0,0,0-2-2H15.46l-2.05-2a2,2,0,0,0-2.82,0L8.54,3.64H5.63a2,2,0,0,0-2,2V8.54l-2,2.05A2,2,0,0,0,1,12a2,2,0,0,0,.58,1.41l2.06,2.05v2.91a2,2,0,0,0,2,2H8.54l2.05,2.05A2,2,0,0,0,12,23a2,2,0,0,0,1.41-.58l2.05-2.06h2.91a2,2,0,0,0,2-2V15.46l2.05-2.05a2,2,0,0,0,0-2.82Zm-4.05,4.05v3.72H14.64L12,21,9.36,18.36H5.64V14.64L3,12,5.64,9.36V5.64H9.36L12,3l2.64,2.64h3.72V9.36L21,12Z" />
           <polygon points="11 12.73 8.71 10.44 7.29 11.85 11 15.56 16.71 9.85 15.29 8.44 11 12.73" />
         </svg>
-
         <p className={styles.date}>{date}</p>
       </div>
       <p className={styles.contentText}>{content}</p>
@@ -99,13 +126,13 @@ const Post = (props) => {
         <img className={styles.contentImage} src={image} alt="contentImg" />
       </div>
       <div className={styles.icons}>
-        <button onClick={handleComments}>
+        <Button onClick={handleComments} className={commented ? 'active' : ''}>
           <svg width="25px" fill="#FFF" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
             <path d="M256 32C114.6 32 0 125.1 0 240c0 47.6 19.9 91.2 52.9 126.3C38 405.7 7 439.1 6.5 439.5c-6.6 7-8.4 17.2-4.6 26S14.4 480 24 480c61.5 0 110-25.7 139.1-46.3C192 442.8 223.2 448 256 448c141.4 0 256-93.1 256-208S397.4 32 256 32zm0 368c-26.7 0-53.1-4.1-78.4-12.1l-22.7-7.2-19.5 13.8c-14.3 10.1-33.9 21.4-57.5 29 7.3-12.1 14.4-25.7 19.9-40.2l10.6-28.1-20.6-21.8C69.7 314.1 48 282.2 48 240c0-88.2 93.3-160 208-160s208 71.8 208 160-93.3 160-208 160z" />
           </svg>
           {comments}
-        </button>
-        <button onClick={handleShares}>
+        </Button>
+        <Button onClick={handleShares} className={shared ? 'active' : ''}>
           <svg
             className="feather feather-share"
             fill="none"
@@ -122,8 +149,8 @@ const Post = (props) => {
             <line x1="12" x2="12" y1="2" y2="15" />
           </svg>
           {shares}
-        </button>
-        <button onClick={handleLikes}>
+        </Button>
+        <Button onClick={handleLikes} className={liked ? 'active' : ''}>
           <svg width="25px" fill="#FFF" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <defs></defs>
             <title />
@@ -135,8 +162,8 @@ const Post = (props) => {
             </g>
           </svg>
           {likes}
-        </button>
-        <button>
+        </Button>
+        <Button>
           <svg width="25px" fill="#FFF" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
             <title />
             <g>
@@ -144,9 +171,9 @@ const Post = (props) => {
               <path d="M43.7578,64.2422a5.9979,5.9979,0,0,0,8.4844,0l18-18a5.9994,5.9994,0,0,0-8.4844-8.4844L54,45.5156V12a6,6,0,0,0-12,0V45.5156l-7.7578-7.7578a5.9994,5.9994,0,0,0-8.4844,8.4844Z" />
             </g>
           </svg>
-        </button>
+        </Button>
       </div>
-    </div>
+    </Card>
   );
 };
 
